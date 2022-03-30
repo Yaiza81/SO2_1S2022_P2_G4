@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 	"fmt"
-	"github.com/gocolly/gocolly"
+	"github.com/gocolly/colly"
 	"strings"
 	"time"
 	tea "github.com/charmbracelet/bubbletea"
@@ -32,7 +32,7 @@ type cache struct{
 	lista map[string]string
 }
 
-var colita =&cache{lista: make(map[string]string)}
+var colita = &cache{lista: make(map[string]string)}
 
 func agregar(k string, v string){
 	if(len(colita.lista)<5){
@@ -52,14 +52,14 @@ func leer() string{
 	colita.mu.Lock()
 	str:=""
 	for k,v:= range colita.lista{
-		str+=fmt.Sprintf("%s → %s \n",k,v)
+		str+=fmt.Sprintf("%s -> %s \n",k,v)
 	}
 	colita.mu.Unlock()
 	return str
 }
 
-func listenForActivity(sub chan responseMsg) tea.Cmd(){
-	return func() tea.Msg{
+func listenForActivity(sub chan responseMsg) tea.Cmd {
+	return func() tea.Msg {
 		jobs:=make(chan trabajito,100)
 		results:=make(chan trabajito,100)
 
@@ -67,7 +67,7 @@ func listenForActivity(sub chan responseMsg) tea.Cmd(){
 		go mono(jobs,results, sub,1)
 		go mono(jobs,results, sub,2)
 
-		jobs ← trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","Chuck",3}
+		jobs <- trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","Chuck",3}
 
 		for r:= range results{
 			x:= r
@@ -75,7 +75,7 @@ func listenForActivity(sub chan responseMsg) tea.Cmd(){
 
 			time.Sleep(time.Duration(1) * time.Second)
 			quitar(x.Busqueda)
-			jobs ← x
+			jobs <- x
 		}
 		return nil
 	}
@@ -83,46 +83,46 @@ func listenForActivity(sub chan responseMsg) tea.Cmd(){
 
 func waitForActivity(sub chan responseMsg) tea.Cmd{
 	return func () tea.Msg{
-		return responseMsg(←sub)
+		return responseMsg(<-sub)
 	}
 }
 
-func mono(jobs ←chan trabajito, results chan← trabajito, sub chan responseMsg, indice int){
+func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMsg, indice int){
 	
 	for j:= range jobs{
 		Url:= j.Url
-		Nr.j.Referencias
+		Nr := j.Referencias
 
 		conteo_palabras:=0
 		var enlaces []string
 		var nombres_enlaces[]string
 
-		sub ← responseMsg {indice, Url, "trabajanading", 0,0,-1}
+		sub <- responseMsg {indice, Url, "trabajanding", 0,0,-1}
 
 		c:= colly.NewCollector(colly.Async(false))
 		c.OnRequest(func(c *colly.Request) { })
 
 		c.OnHTML("div#mw-content-text p", func(e *colly.HTMLElement) {
-			conteo_palabras+=len(strings.Splite(e.Text," "))
-			sub ← responseMsg {indice, Url, "trabajanading", conteo_palabras,len(enlaces),-1}
+			conteo_palabras+=len(strings.Split(e.Text," "))
+			sub <- responseMsg {indice, Url, "trabajanading", conteo_palabras,len(enlaces),-1}
 			time.Sleep(500)
 		})
 
 		c.OnHTML("div#mw-content-text p a", func(e *colly.HTMLElement) {
 			enlaces= append(enlaces, e.Request.AbsoluteURL(e.Attr("href")))
 			nombres_enlaces=append(enlaces, e.Text)
-			sub ← responseMsg {indice, Url, "trabajanading", conteo_palabras,len(enlaces),-1}
+			sub <- responseMsg {indice, Url, "trabajanding", conteo_palabras,len(enlaces),-1}
 		})
 
 		c.OnScraped(func (e *colly.Response){
-			sub ← responseMsg {indice, Url, "trabajanading", conteo_palabras,len(enlaces),-1}
+			sub <- responseMsg {indice, Url, "trabajanding", conteo_palabras,len(enlaces),-1}
 			for i:=0; i< Nr; i++{
 				if (len(enlaces)>1){
 					aux:=enlaces[i]
 					nombre:=nombres_enlaces[i]
 					if (len(results)<10){
 						agregar(nombre,aux)
-						results ← trabajito {aux, nombre, Nr-1}
+						results <- trabajito {aux, nombre, Nr-1}
 					}
 				}
 			}
@@ -137,14 +137,22 @@ type model struct{
 
 	monos	[]string
 	urls	[]string
-	palabras	[]string 
-	enlaces		[]string 
+	palabras	[]int 
+	enlaces		[]int 
 	estados		[]string 
 	
 	links string
 	rola int
 	spinner		spinner.Model
 	quitting	bool
+}
+
+func (m model) Init() tea.Cmd {
+	return tea.Batch(
+		spinner.Tick,
+		listenForActivity(m.sub),
+		waitForActivity(m.sub),
+	)
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd){
@@ -157,7 +165,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd){
 		//ftm.Println(msg)
 		respuesta:=msg.(responseMsg)
 
-		if (respuesta.cola-1){
+		if (respuesta.cola == -1){
 			m.urls[respuesta.indice]=respuesta.url
 			m.palabras[respuesta.indice]=respuesta.palabras
 			m.enlaces[respuesta.indice]=respuesta.enlaces
@@ -167,8 +175,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd){
 		return m, waitForActivity(m.sub) //wait for next event
 		
 	case spinner.TickMsg:
-		var cmd.tea.Cmd
-		m.spinner,cmd=m..spinner.Update(msg)
+		var cmd tea.Cmd
+		m.spinner,cmd=m.spinner.Update(msg)
 		return m,cmd
 		
 	default:
@@ -178,7 +186,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd){
 
 func (m model) View() string{
 	var style =lipgloss.NewStyle().
-		Bold(true)
+		Bold(true).
 		Background(lipgloss.Color("#7D56F4")).
 		Height(1)
 
@@ -207,13 +215,13 @@ func main(){
 		urls:	[]string{"","",""},
 		estados:	[]string{"Esperando","Esperando","Esperando"},
 		palabras:	[]int{0,0,0},
-		enlaces:	[]int{0,0,0},
+		enlaces:	[]int{0, 0, 0},
 
 		spinner: spinner.New(),
 		//cola 0,
 	})
 
-	if p.Start() ≠ nil {
+	if p.Start() != nil {
 		fmt.Println("could not start the program")
 		os.Exit(1)
 	}
