@@ -208,7 +208,14 @@ func (m model) View() string{
 	return s
 }
 
-func main(){
+// Variables
+var cantMonos_ =0
+var tamCola_ =0
+var numNr_ =0
+var urlInicial_ =""
+var archivo_ =""
+
+func ejecucion(){
 	p:=tea.NewProgram(model{
 		sub: make(chan responseMsg),
 		monos:	[]string{"Espino","Turk","Juanito"},
@@ -225,4 +232,57 @@ func main(){
 		fmt.Println("could not start the program")
 		os.Exit(1)
 	}
+}
+
+func main(){
+
+	var opcion1 int
+    
+	for ok := true; ok; ok = !(opcion1>2) {
+		fmt.Println("SELECCIONE SU OPCION")
+		fmt.Println("1. Ingreso de datos")
+		fmt.Println("2. Ejecutar")
+		fmt.Println("3. Salir")
+		fmt.Println("INGRESE OPCION:")
+		fmt.Scan(&opcion1)
+		fmt.Println("")
+	
+		switch opcion1 {
+			case 1:
+				{
+					fmt.Println("1. Cantidad de mono buscadores")
+					fmt.Scan(&cantMonos_)
+					fmt.Println("")
+
+					fmt.Println("2. Tamaño de la cola")
+					fmt.Scan(&tamCola_)
+					fmt.Println("")
+
+					fmt.Println("3. Numero Nr")
+					fmt.Scan(&numNr_)
+					fmt.Println("")
+
+					fmt.Println("4. URL inicial")
+					fmt.Scan(&urlInicial_)
+					fmt.Println("")
+
+					fmt.Println("3. Nombre del archivo")
+					fmt.Scan(&archivo_)
+					fmt.Println("")
+				}
+				
+			case 2:
+				{
+					fmt.Println("Ejecutando...")
+					ejecucion()
+					
+				}
+			
+			default:
+				fmt.Println("Salir")
+				os.Exit(3)
+		}
+	}
+
+
 }
