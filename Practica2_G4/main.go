@@ -157,6 +157,14 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 			sub <- responseMsg {indice, Url, "Trabajanding", conteo_palabras,len(enlaces),-1}
 		})
 
+		collector.OnHTML("div#mw-content-text",func(e *colly.HTMLElement){
+			result:= e.ChildText("p")
+			sha:=getSha(result)
+
+			//fmt.Println(e.ChildText("p"), "sha:" , sha)
+			fmt.Println("sha: ",sha)
+		})
+
 		//OnScraped se ejecuta al final luego de los OnHTML arreglo[4] = 4 arreglo[3]
 		collector.OnScraped(func (element *colly.Response) {
 			sub <- responseMsg {indice, Url, "Descansanding", conteo_palabras, len(enlaces),-1}
