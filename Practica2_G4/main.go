@@ -59,8 +59,9 @@ var Slice_hechos = make([]Datos, 0)
 var colita = &cache{lista: make(map[string]string)}
 
 //Funciones para el manejo de la cola (se utilizó Mutex)
+//len(colita.lista)<5
 func agregar(k string, v string){
-	if(len(colita.lista)<5){
+	if(len(colita.lista)<tamCola_){
 		colita.mu.Lock()
 		colita.lista[k]=v
 		colita.mu.Unlock()
@@ -88,8 +89,8 @@ func listenForActivity(sub chan responseMsg) tea.Cmd {
 	return func() tea.Msg {		
 
 		//Definición de los canales
-		jobs:=make(chan trabajito,100)
-		results:=make(chan trabajito,100)
+		jobs := make(chan trabajito, 100)
+		results := make(chan trabajito, 100)
 
 		//Definición de los 3 monos
 		go mono(jobs,results, sub,0)
@@ -97,7 +98,7 @@ func listenForActivity(sub chan responseMsg) tea.Cmd {
 		go mono(jobs,results, sub,2)
 
 		//Se realiza la primera búsqueda y se define el Nr = 3
-		jobs <- trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","Chuck",3}
+		jobs <- trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","Chuck", 3}
 
 		for r:= range results{
 			x:= r
@@ -123,7 +124,7 @@ func waitForActivity(sub chan responseMsg) tea.Cmd{
 func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMsg, indice int){
 	
 	for j := range jobs {
-		Url:= j.Url
+		Url := j.Url
 		Nr := j.Referencias
 
 		conteo_palabras := 0
@@ -151,14 +152,19 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 		})
 
 		//OnScraped se ejecuta al final luego de los OnHTML
-		collector.OnScraped(func (element *colly.Response){
+		collector.OnScraped(func (element *colly.Response) {
 			sub <- responseMsg {indice, Url, "Descansanding", conteo_palabras, len(enlaces),-1}
 			for i:=0; i< Nr; i++{
 				if (len(enlaces)>1){
+					//&& len(enlaces)<len(enlaces[i])
+					//fmt.Println("AQUIIMPRESION")
 					aux:=enlaces[i]
+					//fmt.Println("Auxiliar: ", aux)
 					nombre:=nombres_enlaces[i]
+					//fmt.Println("Nombres enlaces: ", nombre)
 					if (len(results)<10){
 						agregar(nombre,aux)
+						//fmt.Println("Despues agregar...")
 						results <- trabajito {aux, nombre, Nr-1}
 					}
 				}
@@ -290,7 +296,9 @@ func ejecucion() {
 		urls:	[]string{"","",""},
 		estados:	[]string{"Esperando","Esperando","Esperando"},
 		palabras:	[]int{0,0,0},
-		enlaces:	[]int{0, 0, 0},
+		//enlaces:	make([]int, numNr_),
+
+		enlaces:	[]int{0,0,0},
 
 		spinner: spinner.New(),
 		//cola 0,
