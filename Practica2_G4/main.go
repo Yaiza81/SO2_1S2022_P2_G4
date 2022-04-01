@@ -98,7 +98,7 @@ func listenForActivity(sub chan responseMsg) tea.Cmd {
 		go mono(jobs,results, sub,2)
 
 		//Se realiza la primera búsqueda y se define el Nr = 3
-		jobs <- trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","Chuck", 3}
+		jobs <- trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","GRUPO4_SOPES", numNr_}
 
 		for r:= range results{
 			x:= r
@@ -151,14 +151,14 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 			sub <- responseMsg {indice, Url, "Trabajanding", conteo_palabras,len(enlaces),-1}
 		})
 
-		//OnScraped se ejecuta al final luego de los OnHTML
+		//OnScraped se ejecuta al final luego de los OnHTML arreglo[4] = 4 arreglo[3]
 		collector.OnScraped(func (element *colly.Response) {
 			sub <- responseMsg {indice, Url, "Descansanding", conteo_palabras, len(enlaces),-1}
 			for i:=0; i< Nr; i++{
-				if (len(enlaces)>1){
+				if (len(enlaces)>1&&Nr<len(enlaces)){
 					//&& len(enlaces)<len(enlaces[i])
 					//fmt.Println("AQUIIMPRESION")
-					aux:=enlaces[i]
+					aux:=enlaces[i] //ARREGLO[4] LEN=4 ARREGLO[3]
 					//fmt.Println("Auxiliar: ", aux)
 					nombre:=nombres_enlaces[i]
 					//fmt.Println("Nombres enlaces: ", nombre)
@@ -296,9 +296,9 @@ func ejecucion() {
 		urls:	[]string{"","",""},
 		estados:	[]string{"Esperando","Esperando","Esperando"},
 		palabras:	[]int{0,0,0},
-		//enlaces:	make([]int, numNr_),
+		enlaces:	make([]int, numNr_),
 
-		enlaces:	[]int{0,0,0},
+		//enlaces:	[]int{0,0,0},
 
 		spinner: spinner.New(),
 		//cola 0,
