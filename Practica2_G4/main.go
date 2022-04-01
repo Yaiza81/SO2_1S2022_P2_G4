@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"encoding/json"
 	"log"
+	"strconv"
 )
 
 // Variables
@@ -93,10 +94,13 @@ func listenForActivity(sub chan responseMsg) tea.Cmd {
 		results := make(chan trabajito, 100)
 
 		//Definición de los 3 monos
-		go mono(jobs,results, sub,0)
-		go mono(jobs,results, sub,1)
-		go mono(jobs,results, sub,2)
+	//	go mono(jobs,results, sub,0)
+	//	go mono(jobs,results, sub,1)
+	//	go mono(jobs,results, sub,2)
 
+		for k:=0;k<cantMonos_;k++{
+			go mono(jobs,results, sub,k)
+		}
 		//Se realiza la primera búsqueda y se define el Nr = 3
 		jobs <- trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","GRUPO4_SOPES", numNr_}
 
@@ -253,8 +257,12 @@ func (m model) View() string {
 
 	s:=fmt.Sprintf(style.Render("----- Silencio monos trabajando -----"))
 	s+= fmt.Sprintf("\n\n")
+	for j:=0;j<cantMonos_;j++{
+		//s+= fmt.Sprintf("%s %s url: %s \n palabras contadas: %d enlaces: %d \n\n", m.monos[i], m.estados[i], m.urls[i], m.palabras[i], m.enlaces[i])
+		m.monos[j]="mono_"+strconv.Itoa(j);
+	}
 
-	for i:=0;i<3;i++{
+	for i:=0;i<cantMonos_;i++{
 		s+= fmt.Sprintf("%s %s url: %s \n palabras contadas: %d enlaces: %d \n\n", m.monos[i], m.estados[i], m.urls[i], m.palabras[i], m.enlaces[i])
 	}
 
@@ -292,11 +300,15 @@ func writeJSON(data []Datos) {
 func ejecucion() {
 	p := tea.NewProgram(model {
 		sub: make(chan responseMsg),
-		monos:	[]string{"Espino","Turk","Juanito"},
-		urls:	[]string{"","",""},
-		estados:	[]string{"Esperando","Esperando","Esperando"},
-		palabras:	[]int{0,0,0},
-		enlaces:	make([]int, numNr_),
+		//monos:	[]string{"Espino","Turk","Juanito"},
+		monos:	make([]string,cantMonos_),
+		//urls:	[]string{"","",""},
+		urls:	make([]string,cantMonos_),
+		//estados:	[]string{"Esperando","Esperando","Esperando"},
+		estados:	make([]string,cantMonos_),
+		//palabras:	[]int{0,0,0},
+		palabras:	make([]int,cantMonos_),
+		enlaces:	make([]int, cantMonos_),
 
 		//enlaces:	[]int{0,0,0},
 
@@ -308,6 +320,8 @@ func ejecucion() {
 		fmt.Println("Error al iniciar el programa")
 		os.Exit(1)
 	}
+
+	
 }
 
 func main(){

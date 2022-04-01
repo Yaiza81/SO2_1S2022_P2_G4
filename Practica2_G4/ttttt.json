@@ -1,0 +1,18 @@
+[
+ {
+  "origen": "a",
+  "cont_palabras": 650,
+  "cont_enlaces": 38,
+  "sha": "a",
+  "url": "https://es.wikipedia.org/wiki/Chuck_Norris",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 126,
+  "cont_enlaces": 15,
+  "sha": "a",
+  "url": "https://es.wikipedia.org/wiki/Ryan_(Oklahoma)",
+  "mono": "c"
+ }
+]
