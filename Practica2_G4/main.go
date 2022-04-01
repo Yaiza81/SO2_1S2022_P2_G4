@@ -14,6 +14,8 @@ import (
 	"encoding/json"
 	"log"
 	"strconv"
+	"crypto/sha256"
+	"encoding/hex"
 )
 
 // Variables
@@ -322,6 +324,14 @@ func ejecucion() {
 	}
 
 	
+}
+
+//función para obtener Sha256 
+func getSha(cadena string) string {
+	h := sha256.New()
+	h.Write([]byte(cadena))
+	sha_hash := hex.EncodeToString(h.Sum(nil))
+	return sha_hash
 }
 
 func main(){
