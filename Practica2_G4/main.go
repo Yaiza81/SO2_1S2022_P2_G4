@@ -10,9 +10,19 @@ import (
 	"github.com/charmbracelet/bubbles/spinner"
 	"github.com/charmbracelet/lipgloss"
 	"sync"
+	"io/ioutil"
+	"encoding/json"
+	"log"
 )
 
-type responseMsg struct{
+// Variables
+var cantMonos_ =0
+var tamCola_ =0
+var numNr_ =0
+var urlInicial_ =""
+var archivo_ =""
+
+type responseMsg struct {
 	indice int
 	url string
 	estado string
@@ -32,8 +42,23 @@ type cache struct{
 	lista map[string]string
 }
 
+//Estructura que tendrá la información a escribir en el JSON
+type Datos struct {
+	Origen string 		`json:"origen"`
+	Cont_palabras int	`json:"cont_palabras"`
+	Cont_enlaces int	`json:"cont_enlaces"`
+	Sha string			`json:"sha"`
+	Url string			`json:"url"`
+	Mono string			`json:"mono"`
+}
+
+//Se crea un slice de tipo Datos vacío que vaya guardando todo lo que se recolecte
+var Slice_hechos = make([]Datos, 0)
+
+//Cola de espera
 var colita = &cache{lista: make(map[string]string)}
 
+//Funciones para el manejo de la cola (se utilizó Mutex)
 func agregar(k string, v string){
 	if(len(colita.lista)<5){
 		colita.mu.Lock()
@@ -58,21 +83,27 @@ func leer() string{
 	return str
 }
 
+//Función para la interfaz gráfica
 func listenForActivity(sub chan responseMsg) tea.Cmd {
-	return func() tea.Msg {
+	return func() tea.Msg {		
+
+		//Definición de los canales
 		jobs:=make(chan trabajito,100)
 		results:=make(chan trabajito,100)
 
+		//Definición de los 3 monos
 		go mono(jobs,results, sub,0)
 		go mono(jobs,results, sub,1)
 		go mono(jobs,results, sub,2)
 
+		//Se realiza la primera búsqueda y se define el Nr = 3
 		jobs <- trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","Chuck",3}
 
 		for r:= range results{
 			x:= r
 			//fmt.Println(x.Busqueda)
 
+			//Timer para que se muestre en pantalla
 			time.Sleep(time.Duration(1) * time.Second)
 			quitar(x.Busqueda)
 			jobs <- x
@@ -87,35 +118,41 @@ func waitForActivity(sub chan responseMsg) tea.Cmd{
 	}
 }
 
+//Definición de los monos (worker)
+//se envía un canal de trabajo y uno de resultados
 func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMsg, indice int){
 	
-	for j:= range jobs{
+	for j := range jobs {
 		Url:= j.Url
 		Nr := j.Referencias
 
-		conteo_palabras:=0
+		conteo_palabras := 0
 		var enlaces []string
 		var nombres_enlaces[]string
 
 		sub <- responseMsg {indice, Url, "trabajanding", 0,0,-1}
 
-		c:= colly.NewCollector(colly.Async(false))
-		c.OnRequest(func(c *colly.Request) { })
+		//Se crea el recolector
+		collector := colly.NewCollector(colly.Async(false))
 
-		c.OnHTML("div#mw-content-text p", func(e *colly.HTMLElement) {
-			conteo_palabras+=len(strings.Split(e.Text," "))
-			sub <- responseMsg {indice, Url, "trabajanading", conteo_palabras,len(enlaces),-1}
+		//Función que se realiza cada vez que se realiza una petición
+		collector.OnRequest(func(collector *colly.Request) { })
+
+		//OnHTML ejecuta algo cada vez que se encuentre un query que coincida con el parámetro indicado
+		collector.OnHTML("div#mw-content-text p", func(element *colly.HTMLElement) {
+			conteo_palabras += len(strings.Split(element.Text," "))
+			sub <- responseMsg {indice, Url, "Trabajanding...", conteo_palabras,len(enlaces),-1}
 			time.Sleep(500)
 		})
-
-		c.OnHTML("div#mw-content-text p a", func(e *colly.HTMLElement) {
-			enlaces= append(enlaces, e.Request.AbsoluteURL(e.Attr("href")))
-			nombres_enlaces=append(enlaces, e.Text)
-			sub <- responseMsg {indice, Url, "trabajanding", conteo_palabras,len(enlaces),-1}
+		collector.OnHTML("div#mw-content-text p a", func(element *colly.HTMLElement) {
+			enlaces= append(enlaces, element.Request.AbsoluteURL(element.Attr("href")))
+			nombres_enlaces=append(enlaces, element.Text)
+			sub <- responseMsg {indice, Url, "Trabajanding", conteo_palabras,len(enlaces),-1}
 		})
 
-		c.OnScraped(func (e *colly.Response){
-			sub <- responseMsg {indice, Url, "trabajanding", conteo_palabras,len(enlaces),-1}
+		//OnScraped se ejecuta al final luego de los OnHTML
+		collector.OnScraped(func (element *colly.Response){
+			sub <- responseMsg {indice, Url, "Descansanding", conteo_palabras, len(enlaces),-1}
 			for i:=0; i< Nr; i++{
 				if (len(enlaces)>1){
 					aux:=enlaces[i]
@@ -126,9 +163,26 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 					}
 				}
 			}
+
+			//Se crea una estructura para los datos del mono
+			data := Datos {
+				Origen: "a",
+				Cont_palabras: conteo_palabras,
+				Cont_enlaces: len(enlaces),
+				Sha: "a",
+				Url: Url,
+				Mono: "c",
+			}
+			
+			//Antes de terminar agregamos la info al slice
+			Slice_hechos = append(Slice_hechos, data)
+
+			//Tiempo proporcional de espera
 			time.Sleep(time.Duration(conteo_palabras/500)*time.Second)
 		})
-		c.Visit(Url)
+
+		//URL que visita el recolector
+		collector.Visit(Url)
 	}
 }
 
@@ -184,7 +238,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd){
 	}
 }
 
-func (m model) View() string{
+//Función para mostrar los resultados
+func (m model) View() string {
 	var style =lipgloss.NewStyle().
 		Bold(true).
 		Background(lipgloss.Color("#7D56F4")).
@@ -201,22 +256,35 @@ func (m model) View() string{
 	s += fmt.Sprintf("\n\n %s",m.links)
 	s += fmt.Sprintf("\n\nPresione cualquier tecla para salir")
 	
+	//Aquí finaliza la ejecución del programa
 	if m.quitting{
-		s += "\n"
+		//Se crea el json con el struct de datos
+		writeJSON(Slice_hechos)
+
+		s += "\n"		
 	}
 
 	return s
 }
 
-// Variables
-var cantMonos_ =0
-var tamCola_ =0
-var numNr_ =0
-var urlInicial_ =""
-var archivo_ =""
+//Función para escritura del JSON que recibe un parámetro de tipo Datos
+func writeJSON(data []Datos) {
+	//Se transforma a tipo JSON con el metodo MarshalIndent
+	file, err := json.MarshalIndent(data, "", " ")
 
-func ejecucion(){
-	p:=tea.NewProgram(model{
+	//Se maneja el error
+	if err != nil {
+		log.Println("Unable to create json file")
+		return
+	}
+
+	//Se crea un archivo que almacena toda la información
+	
+	_ = ioutil.WriteFile(archivo_, file, 0644)
+}
+
+func ejecucion() {
+	p := tea.NewProgram(model {
 		sub: make(chan responseMsg),
 		monos:	[]string{"Espino","Turk","Juanito"},
 		urls:	[]string{"","",""},
@@ -227,9 +295,9 @@ func ejecucion(){
 		spinner: spinner.New(),
 		//cola 0,
 	})
-
+	
 	if p.Start() != nil {
-		fmt.Println("could not start the program")
+		fmt.Println("Error al iniciar el programa")
 		os.Exit(1)
 	}
 }
@@ -268,14 +336,14 @@ func main(){
 
 					fmt.Println("3. Nombre del archivo")
 					fmt.Scan(&archivo_)
+					archivo_ += ".json"
 					fmt.Println("")
 				}
 				
 			case 2:
 				{
 					fmt.Println("Ejecutando...")
-					ejecucion()
-					
+					ejecucion()					
 				}
 			
 			default:
@@ -283,6 +351,4 @@ func main(){
 				os.Exit(3)
 		}
 	}
-
-
 }
