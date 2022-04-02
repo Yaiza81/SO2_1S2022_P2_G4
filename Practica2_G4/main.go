@@ -105,7 +105,7 @@ func listenForActivity(sub chan responseMsg) tea.Cmd {
 			go mono(jobs,results, sub,k)
 		}
 		//Se realiza la primera búsqueda y se define el Nr = 3
-		jobs <- trabajito {"https://es.wikipedia.org/wiki/Chuck_Norris","GRUPO4_SOPES", numNr_}
+		jobs <- trabajito {urlInicial_,"GRUPO4_SOPES", numNr_}
 
 		for r:= range results{
 			x:= r
