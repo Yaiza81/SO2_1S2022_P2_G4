@@ -1,0 +1,114 @@
+[
+ {
+  "origen": "a",
+  "cont_palabras": 650,
+  "cont_enlaces": 38,
+  "sha": "5234865a0b00b48c88e5fbc2deeda21cb0c33a54f82b0f4ff5268d268b5b5c1b",
+  "url": "https://es.wikipedia.org/wiki/Chuck_Norris",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 126,
+  "cont_enlaces": 15,
+  "sha": "1b83313b200e82353eea330906ffefb0fa3c2ea911e54195b9c1573f965dcb90",
+  "url": "https://es.wikipedia.org/wiki/Ryan_(Oklahoma)",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 6292,
+  "cont_enlaces": 430,
+  "sha": "bf3391eb767e643cb605fa724c83b3009a3c46c5a99ae9b4ecb01fe0f0d1ae75",
+  "url": "https://es.wikipedia.org/wiki/Oklahoma",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 28,
+  "cont_enlaces": 4,
+  "sha": "73acd05cca7820e63d82d816ab3af72e8a1468e0c13315534aab2a6ab380a9b7",
+  "url": "https://es.wikipedia.org/wiki/10_de_marzo",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 152,
+  "cont_enlaces": 24,
+  "sha": "ed61b020267478f8f886b821857d84a341e5c730e1d30a800c84fa677160c8e2",
+  "url": "https://es.wikipedia.org/wiki/Condado_de_Jefferson_(Oklahoma)",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 1796,
+  "cont_enlaces": 87,
+  "sha": "4e3587cb9331be8b70d2aeca821363c2d9750ca76fd54ee18eb86fd4997837b3",
+  "url": "https://es.wikipedia.org/wiki/Estado_de_los_Estados_Unidos_de_Am%C3%A9rica",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 32,
+  "cont_enlaces": 4,
+  "sha": "6cad66bf603143757a4900a966621881ffa1be93fcb7789aec1a7c1d5cb97b3d",
+  "url": "https://es.wikipedia.org/wiki/Ayuda:AFI/Ingl%C3%A9s",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 2829,
+  "cont_enlaces": 175,
+  "sha": "87b5c03b0930dbdb8c6e8b5a9cb10bfd823375e7b82ca385487db7b8be0397da",
+  "url": "https://es.wikipedia.org/wiki/D%C3%ADa",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 2789,
+  "cont_enlaces": 163,
+  "sha": "7481ac38960d3617dfcc6f277bfff0d33e7e03309b3e0fcc7414c0db6287eacc",
+  "url": "https://es.wikipedia.org/wiki/A%C3%B1o",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 3753,
+  "cont_enlaces": 333,
+  "sha": "325e3540ece850e13b26d5f1aefae333ecbd9197903977eefa87b74f225e4747",
+  "url": "https://es.wikipedia.org/wiki/Idioma_ingl%C3%A9s",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 320,
+  "cont_enlaces": 46,
+  "sha": "13f7774ccb7f7ffe084daca1b31ffd111ec1e918e77d13747262ab6897d186ea",
+  "url": "https://es.wikipedia.org/wiki/Demarcaci%C3%B3n_administrativa",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 1802,
+  "cont_enlaces": 134,
+  "sha": "f2bc2e7d41f477d77b6a4414aac721bd426812e70d5ee58f6c0c6d978a91daec",
+  "url": "https://es.wikipedia.org/wiki/Alfabeto_Fon%C3%A9tico_Internacional",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 291,
+  "cont_enlaces": 9,
+  "sha": "28780a3b5a41e5d4f05e9e240413a34d900e1c9e1a247e864e947742e463d7c2",
+  "url": "https://es.wikipedia.org/w/index.php?title=Un\u0026action=edit\u0026redlink=1",
+  "mono": "c"
+ },
+ {
+  "origen": "a",
+  "cont_palabras": 730,
+  "cont_enlaces": 25,
+  "sha": "2b93c9f5e67b1affacd0dc03c5ce0dcac087725d5338dfdf896cd84e143c52fa",
+  "url": "https://es.wikipedia.org/wiki/A%C3%B1o_juliano_(astronom%C3%ADa)",
+  "mono": "c"
+ }
+]

@@ -32,6 +32,7 @@ type responseMsg struct {
 	palabras int
 	enlaces int
 	cola int
+	sha string
 }
 
 type trabajito struct {
@@ -136,8 +137,9 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 		conteo_palabras := 0
 		var enlaces []string
 		var nombres_enlaces[]string
+		var sha string
 
-		sub <- responseMsg {indice, Url, "trabajanding", 0,0,-1}
+		sub <- responseMsg {indice, Url, "trabajanding", 0,0,-1,sha}
 
 		//Se crea el recolector
 		collector := colly.NewCollector(colly.Async(false))
@@ -148,26 +150,27 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 		//OnHTML ejecuta algo cada vez que se encuentre un query que coincida con el parámetro indicado
 		collector.OnHTML("div#mw-content-text p", func(element *colly.HTMLElement) {
 			conteo_palabras += len(strings.Split(element.Text," "))
-			sub <- responseMsg {indice, Url, "Trabajanding...", conteo_palabras,len(enlaces),-1}
+			sub <- responseMsg {indice, Url, "Trabajanding...", conteo_palabras,len(enlaces),-1,sha}
 			time.Sleep(500)
 		})
 		collector.OnHTML("div#mw-content-text p a", func(element *colly.HTMLElement) {
 			enlaces= append(enlaces, element.Request.AbsoluteURL(element.Attr("href")))
 			nombres_enlaces=append(enlaces, element.Text)
-			sub <- responseMsg {indice, Url, "Trabajanding", conteo_palabras,len(enlaces),-1}
+			sub <- responseMsg {indice, Url, "Trabajanding", conteo_palabras,len(enlaces),-1,sha}
 		})
 
 		collector.OnHTML("div#mw-content-text",func(e *colly.HTMLElement){
 			result:= e.ChildText("p")
-			sha:=getSha(result)
+			sha=getSha(result)
 
 			//fmt.Println(e.ChildText("p"), "sha:" , sha)
-			fmt.Println("sha: ",sha)
+			//fmt.Println("sha: ",sha)
+			sub <- responseMsg {indice, Url, "Trabajanding", conteo_palabras,len(enlaces),-1,sha}
 		})
 
 		//OnScraped se ejecuta al final luego de los OnHTML arreglo[4] = 4 arreglo[3]
 		collector.OnScraped(func (element *colly.Response) {
-			sub <- responseMsg {indice, Url, "Descansanding", conteo_palabras, len(enlaces),-1}
+			sub <- responseMsg {indice, Url, "Descansanding", conteo_palabras, len(enlaces),-1,sha}
 			for i:=0; i< Nr; i++{
 				if (len(enlaces)>1&&Nr<len(enlaces)){
 					//&& len(enlaces)<len(enlaces[i])
@@ -189,7 +192,7 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 				Origen: "a",
 				Cont_palabras: conteo_palabras,
 				Cont_enlaces: len(enlaces),
-				Sha: "a",
+				Sha: sha,
 				Url: Url,
 				Mono: "c",
 			}
@@ -214,6 +217,7 @@ type model struct{
 	palabras	[]int 
 	enlaces		[]int 
 	estados		[]string 
+	sha []string
 	
 	links string
 	rola int
@@ -244,6 +248,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd){
 			m.palabras[respuesta.indice]=respuesta.palabras
 			m.enlaces[respuesta.indice]=respuesta.enlaces
 			m.estados[respuesta.indice]=respuesta.estado
+			m.sha[respuesta.indice]=respuesta.sha
 			m.links=leer()
 		}
 		return m, waitForActivity(m.sub) //wait for next event
@@ -273,7 +278,7 @@ func (m model) View() string {
 	}
 
 	for i:=0;i<cantMonos_;i++{
-		s+= fmt.Sprintf("%s %s url: %s \n palabras contadas: %d enlaces: %d \n\n", m.monos[i], m.estados[i], m.urls[i], m.palabras[i], m.enlaces[i])
+		s+= fmt.Sprintf("%s %s url: %s \n palabras contadas: %d enlaces: %d  sha: %s \n\n", m.monos[i], m.estados[i], m.urls[i], m.palabras[i], m.enlaces[i], m.sha[i])
 	}
 
 	s += fmt.Sprintf(style.Render("----- Cola de trabajo -----"))
@@ -319,6 +324,7 @@ func ejecucion() {
 		//palabras:	[]int{0,0,0},
 		palabras:	make([]int,cantMonos_),
 		enlaces:	make([]int, cantMonos_),
+		sha: make([]string,cantMonos_),
 
 		//enlaces:	[]int{0,0,0},
 
