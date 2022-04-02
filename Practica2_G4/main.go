@@ -24,6 +24,7 @@ var tamCola_ =0
 var numNr_ =0
 var urlInicial_ =""
 var archivo_ =""
+var mycont = 0
 
 type responseMsg struct {
 	indice int
@@ -58,6 +59,7 @@ type Datos struct {
 
 //Se crea un slice de tipo Datos vacío que vaya guardando todo lo que se recolecte
 var Slice_hechos = make([]Datos, 0)
+var arreglo_sha = make([]string, 0)
 
 //Cola de espera
 var colita = &cache{lista: make(map[string]string)}
@@ -163,6 +165,8 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 			result:= e.ChildText("p")
 			sha=getSha(result)
 
+			arreglo_sha = append(arreglo_sha, sha)
+
 			//fmt.Println(e.ChildText("p"), "sha:" , sha)
 			//fmt.Println("sha: ",sha)
 			sub <- responseMsg {indice, Url, "Trabajanding", conteo_palabras,len(enlaces),-1,sha}
@@ -187,14 +191,22 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 				}
 			}
 
+			origen_aux := "0"
+
+			if(mycont == 0) {
+				origen_aux = arreglo_sha[mycont]
+			}
+			mycont += 1
+			fmt.Println(arreglo_sha)
+
 			//Se crea una estructura para los datos del mono
 			data := Datos {
-				Origen: "a",
+				Origen: origen_aux,
 				Cont_palabras: conteo_palabras,
 				Cont_enlaces: len(enlaces),
 				Sha: sha,
 				Url: Url,
-				Mono: "c",
+				Mono: "mono_"+strconv.Itoa(indice),
 			}
 			
 			//Antes de terminar agregamos la info al slice
@@ -282,7 +294,7 @@ func (m model) View() string {
 	}
 
 	s += fmt.Sprintf(style.Render("----- Cola de trabajo -----"))
-	s += fmt.Sprintf("\n\n %s",m.links)
+	s += fmt.Sprintf("\n\n %s monoss",m.links)
 	s += fmt.Sprintf("\n\nPresione cualquier tecla para salir")
 	
 	//Aquí finaliza la ejecución del programa

@@ -1,514 +1,82 @@
 [
  {
-  "origen": "a",
-  "cont_palabras": 650,
-  "cont_enlaces": 38,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Chuck_Norris",
-  "mono": "c"
+  "origen": "3859a925d4b8348ed9132f0069ae2fca5dbe4787be2cf36821b0bd17a5decf18",
+  "cont_palabras": 7057,
+  "cont_enlaces": 487,
+  "sha": "3859a925d4b8348ed9132f0069ae2fca5dbe4787be2cf36821b0bd17a5decf18",
+  "url": "https://es.wikipedia.org/wiki/Mario_Vargas_Llosa",
+  "mono": "mono_4"
  },
  {
-  "origen": "a",
-  "cont_palabras": 126,
-  "cont_enlaces": 15,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Ryan_(Oklahoma)",
-  "mono": "c"
+  "origen": "0",
+  "cont_palabras": 15677,
+  "cont_enlaces": 581,
+  "sha": "1795df5543f95d28e57509a52d7105e4682778ada334307bdde09005135d2fe8",
+  "url": "https://es.wikipedia.org/wiki/Arequipa",
+  "mono": "mono_0"
  },
  {
-  "origen": "a",
-  "cont_palabras": 6292,
-  "cont_enlaces": 430,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Oklahoma",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 28,
+  "origen": "0",
+  "cont_palabras": 29,
   "cont_enlaces": 4,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/10_de_marzo",
-  "mono": "c"
+  "sha": "3fe8f3cf37533854388dfa7d38f44390f648e3c5e67dda8273bd895b2ab7519e",
+  "url": "https://es.wikipedia.org/wiki/28_de_marzo",
+  "mono": "mono_1"
  },
  {
-  "origen": "a",
-  "cont_palabras": 32,
+  "origen": "0",
+  "cont_palabras": 13,
   "cont_enlaces": 3,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/1940",
-  "mono": "c"
+  "sha": "9514a30df5b4515379ea39ad1607eaa7e123066f7e50a01c3b10379605ad004d",
+  "url": "https://es.wikipedia.org/wiki/1936",
+  "mono": "mono_2"
  },
  {
-  "origen": "a",
-  "cont_palabras": 456,
-  "cont_enlaces": 26,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Actor",
-  "mono": "c"
+  "origen": "0",
+  "cont_palabras": 5288,
+  "cont_enlaces": 261,
+  "sha": "079ba20b718a92ad5e25fd875d69dee8e79299d0ebe3dbc33df358000f48feea",
+  "url": "https://es.wikipedia.org/wiki/Escritor",
+  "mono": "mono_3"
  },
  {
-  "origen": "a",
-  "cont_palabras": 152,
-  "cont_enlaces": 24,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Condado_de_Jefferson_(Oklahoma)",
-  "mono": "c"
+  "origen": "0",
+  "cont_palabras": 19983,
+  "cont_enlaces": 2063,
+  "sha": "7bad3ad0482f42dd9a24326ac4df74a359198398c6c11d7c1aa457c1b6be5893",
+  "url": "https://es.wikipedia.org/wiki/Per%C3%BA",
+  "mono": "mono_1"
  },
  {
-  "origen": "a",
-  "cont_palabras": 1796,
-  "cont_enlaces": 87,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Estado_de_los_Estados_Unidos_de_Am%C3%A9rica",
-  "mono": "c"
+  "origen": "0",
+  "cont_palabras": 19983,
+  "cont_enlaces": 2063,
+  "sha": "7bad3ad0482f42dd9a24326ac4df74a359198398c6c11d7c1aa457c1b6be5893",
+  "url": "https://es.wikipedia.org/wiki/Per%C3%BA",
+  "mono": "mono_2"
  },
  {
-  "origen": "a",
-  "cont_palabras": 6292,
-  "cont_enlaces": 430,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Oklahoma",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 958,
-  "cont_enlaces": 54,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Censo_de_los_Estados_Unidos_de_2010",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 84,
-  "cont_enlaces": 15,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Km%C2%B2",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 32,
-  "cont_enlaces": 4,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Ayuda:AFI/Ingl%C3%A9s",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 3000,
-  "cont_enlaces": 118,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Autor",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 1461,
-  "cont_enlaces": 118,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/T%C3%ADteres",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 11318,
-  "cont_enlaces": 810,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Antigua_Grecia",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 282,
-  "cont_enlaces": 27,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Tespis",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 3753,
-  "cont_enlaces": 333,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Idioma_ingl%C3%A9s",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 320,
-  "cont_enlaces": 46,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Demarcaci%C3%B3n_administrativa",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 32,
-  "cont_enlaces": 4,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Ayuda:AFI/Ingl%C3%A9s",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 1024,
-  "cont_enlaces": 27,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Censo_de_Estados_Unidos",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2235,
-  "cont_enlaces": 186,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Unidad_de_medida",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 649,
-  "cont_enlaces": 60,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Obra_art%C3%ADstica",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 3598,
-  "cont_enlaces": 100,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Literatura",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 7683,
-  "cont_enlaces": 457,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Historia_de_Grecia",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 1199,
-  "cont_enlaces": 32,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Edad_oscura",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 838,
-  "cont_enlaces": 83,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Griego_antiguo",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2821,
-  "cont_enlaces": 227,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Lenguas_indoeuropeas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 640,
-  "cont_enlaces": 103,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Entidades_pol%C3%ADticas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 456,
+  "origen": "0",
+  "cont_palabras": 460,
   "cont_enlaces": 12,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Censo_(estad%C3%ADstica)",
-  "mono": "c"
+  "sha": "8ff649e16540d52cf45fb464c8f818e19a1c875b623387fe5334bef9844bcdfb",
+  "url": "https://es.wikipedia.org/wiki/Provincia_de_Arequipa",
+  "mono": "mono_4"
  },
  {
-  "origen": "a",
-  "cont_palabras": 2413,
-  "cont_enlaces": 91,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Constituci%C3%B3n_de_los_Estados_Unidos",
-  "mono": "c"
+  "origen": "0",
+  "cont_palabras": 1331,
+  "cont_enlaces": 113,
+  "sha": "e27e36abbc7c9d53d835decba98e57636c607220559b1dbf753c89239a532d04",
+  "url": "https://es.wikipedia.org/wiki/Departamento_de_Arequipa",
+  "mono": "mono_4"
  },
  {
-  "origen": "a",
-  "cont_palabras": 1247,
-  "cont_enlaces": 41,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Magnitud_f%C3%ADsica",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 11303,
-  "cont_enlaces": 717,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Arte",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2275,
-  "cont_enlaces": 127,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Real_Academia_Espa%C3%B1ola",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 21,
-  "cont_enlaces": 0,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/II_milenio_a._C.",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 7683,
-  "cont_enlaces": 457,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Historia_de_Grecia",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 1820,
-  "cont_enlaces": 78,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Lengua_muerta",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2546,
-  "cont_enlaces": 149,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Familia_de_lenguas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 3018,
-  "cont_enlaces": 165,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Ciencias_pol%C3%ADticas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 1136,
-  "cont_enlaces": 41,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Estad%C3%ADstica_descriptiva",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 282,
-  "cont_enlaces": 12,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Pre%C3%A1mbulo_de_la_Constituci%C3%B3n_de_los_Estados_Unidos",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 3019,
-  "cont_enlaces": 99,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Medici%C3%B3n",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 5962,
-  "cont_enlaces": 338,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Lat%C3%ADn",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 21,
-  "cont_enlaces": 0,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/II_milenio_a._C.",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 14542,
-  "cont_enlaces": 1438,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Grecia",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2821,
-  "cont_enlaces": 227,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Lenguas_indoeuropeas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 4676,
-  "cont_enlaces": 371,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Ciencia_social",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 3372,
-  "cont_enlaces": 210,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Matem%C3%A1ticas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 282,
-  "cont_enlaces": 12,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Pre%C3%A1mbulo_de_la_Constituci%C3%B3n_de_los_Estados_Unidos",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 5365,
-  "cont_enlaces": 441,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Ciencia",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 1569,
-  "cont_enlaces": 110,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Lenguas_it%C3%A1licas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 131,
-  "cont_enlaces": 30,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Archivo:EU-Greece.svg",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2418,
-  "cont_enlaces": 137,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Griego_moderno",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2546,
-  "cont_enlaces": 149,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Familia_de_lenguas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 1476,
-  "cont_enlaces": 138,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Ramas_de_la_ciencia",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 282,
-  "cont_enlaces": 12,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Pre%C3%A1mbulo_de_la_Constituci%C3%B3n_de_los_Estados_Unidos",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 5962,
-  "cont_enlaces": 338,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Lat%C3%ADn",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2821,
-  "cont_enlaces": 227,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Lenguas_indoeuropeas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 2821,
-  "cont_enlaces": 227,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Lenguas_indoeuropeas",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 0,
-  "cont_enlaces": 0,
-  "sha": "a",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/EU-Greece.svg",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 650,
-  "cont_enlaces": 38,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Chuck_Norris",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 126,
-  "cont_enlaces": 15,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Ryan_(Oklahoma)",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 6292,
-  "cont_enlaces": 430,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/Oklahoma",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 28,
-  "cont_enlaces": 4,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/10_de_marzo",
-  "mono": "c"
- },
- {
-  "origen": "a",
-  "cont_palabras": 32,
-  "cont_enlaces": 3,
-  "sha": "a",
-  "url": "https://es.wikipedia.org/wiki/1940",
-  "mono": "c"
+  "origen": "0",
+  "cont_palabras": 12673,
+  "cont_enlaces": 1258,
+  "sha": "29d2e408272fd07a34cc582bb1d637a40d3e20ef1e7f52f5e46aa0a35b23e698",
+  "url": "https://es.wikipedia.org/wiki/Lima",
+  "mono": "mono_3"
  }
 ]
