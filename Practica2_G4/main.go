@@ -193,11 +193,10 @@ func mono(jobs <- chan trabajito, results chan <- trabajito, sub chan responseMs
 
 			origen_aux := "0"
 
-			if(mycont == 0) {
-				origen_aux = arreglo_sha[mycont]
+			if(mycont > 0) {
+				origen_aux = arreglo_sha[mycont-1]
 			}
 			mycont += 1
-			fmt.Println(arreglo_sha)
 
 			//Se crea una estructura para los datos del mono
 			data := Datos {

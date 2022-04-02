@@ -1,6 +1,6 @@
 [
  {
-  "origen": "3859a925d4b8348ed9132f0069ae2fca5dbe4787be2cf36821b0bd17a5decf18",
+  "origen": "0",
   "cont_palabras": 7057,
   "cont_enlaces": 487,
   "sha": "3859a925d4b8348ed9132f0069ae2fca5dbe4787be2cf36821b0bd17a5decf18",
@@ -8,7 +8,7 @@
   "mono": "mono_4"
  },
  {
-  "origen": "0",
+  "origen": "3859a925d4b8348ed9132f0069ae2fca5dbe4787be2cf36821b0bd17a5decf18",
   "cont_palabras": 15677,
   "cont_enlaces": 581,
   "sha": "1795df5543f95d28e57509a52d7105e4682778ada334307bdde09005135d2fe8",
@@ -16,7 +16,7 @@
   "mono": "mono_0"
  },
  {
-  "origen": "0",
+  "origen": "1795df5543f95d28e57509a52d7105e4682778ada334307bdde09005135d2fe8",
   "cont_palabras": 29,
   "cont_enlaces": 4,
   "sha": "3fe8f3cf37533854388dfa7d38f44390f648e3c5e67dda8273bd895b2ab7519e",
@@ -24,7 +24,7 @@
   "mono": "mono_1"
  },
  {
-  "origen": "0",
+  "origen": "3fe8f3cf37533854388dfa7d38f44390f648e3c5e67dda8273bd895b2ab7519e",
   "cont_palabras": 13,
   "cont_enlaces": 3,
   "sha": "9514a30df5b4515379ea39ad1607eaa7e123066f7e50a01c3b10379605ad004d",
@@ -32,7 +32,7 @@
   "mono": "mono_2"
  },
  {
-  "origen": "0",
+  "origen": "9514a30df5b4515379ea39ad1607eaa7e123066f7e50a01c3b10379605ad004d",
   "cont_palabras": 5288,
   "cont_enlaces": 261,
   "sha": "079ba20b718a92ad5e25fd875d69dee8e79299d0ebe3dbc33df358000f48feea",
@@ -40,7 +40,7 @@
   "mono": "mono_3"
  },
  {
-  "origen": "0",
+  "origen": "079ba20b718a92ad5e25fd875d69dee8e79299d0ebe3dbc33df358000f48feea",
   "cont_palabras": 19983,
   "cont_enlaces": 2063,
   "sha": "7bad3ad0482f42dd9a24326ac4df74a359198398c6c11d7c1aa457c1b6be5893",
@@ -48,7 +48,7 @@
   "mono": "mono_1"
  },
  {
-  "origen": "0",
+  "origen": "7bad3ad0482f42dd9a24326ac4df74a359198398c6c11d7c1aa457c1b6be5893",
   "cont_palabras": 19983,
   "cont_enlaces": 2063,
   "sha": "7bad3ad0482f42dd9a24326ac4df74a359198398c6c11d7c1aa457c1b6be5893",
@@ -56,7 +56,7 @@
   "mono": "mono_2"
  },
  {
-  "origen": "0",
+  "origen": "7bad3ad0482f42dd9a24326ac4df74a359198398c6c11d7c1aa457c1b6be5893",
   "cont_palabras": 460,
   "cont_enlaces": 12,
   "sha": "8ff649e16540d52cf45fb464c8f818e19a1c875b623387fe5334bef9844bcdfb",
@@ -64,7 +64,7 @@
   "mono": "mono_4"
  },
  {
-  "origen": "0",
+  "origen": "8ff649e16540d52cf45fb464c8f818e19a1c875b623387fe5334bef9844bcdfb",
   "cont_palabras": 1331,
   "cont_enlaces": 113,
   "sha": "e27e36abbc7c9d53d835decba98e57636c607220559b1dbf753c89239a532d04",
@@ -72,11 +72,43 @@
   "mono": "mono_4"
  },
  {
-  "origen": "0",
+  "origen": "e27e36abbc7c9d53d835decba98e57636c607220559b1dbf753c89239a532d04",
   "cont_palabras": 12673,
   "cont_enlaces": 1258,
   "sha": "29d2e408272fd07a34cc582bb1d637a40d3e20ef1e7f52f5e46aa0a35b23e698",
   "url": "https://es.wikipedia.org/wiki/Lima",
   "mono": "mono_3"
+ },
+ {
+  "origen": "29d2e408272fd07a34cc582bb1d637a40d3e20ef1e7f52f5e46aa0a35b23e698",
+  "cont_palabras": 5892,
+  "cont_enlaces": 416,
+  "sha": "3dd33c7f1b18bf8ec5a80eccc19a84c7573fa570e85910542c9405ea7e39024c",
+  "url": "https://es.wikipedia.org/wiki/Novela",
+  "mono": "mono_4"
+ },
+ {
+  "origen": "3dd33c7f1b18bf8ec5a80eccc19a84c7573fa570e85910542c9405ea7e39024c",
+  "cont_palabras": 4327,
+  "cont_enlaces": 301,
+  "sha": "d5a4d80b444e078705f9604fab6106c6e876700bc3c76bcd23654ceffd0f5463",
+  "url": "https://es.wikipedia.org/wiki/Cuento",
+  "mono": "mono_4"
+ },
+ {
+  "origen": "d5a4d80b444e078705f9604fab6106c6e876700bc3c76bcd23654ceffd0f5463",
+  "cont_palabras": 4600,
+  "cont_enlaces": 171,
+  "sha": "942a429aee9eb20f6c3046707ca2fcba38f45272acb65337b137bf3dfbe5e5e8",
+  "url": "https://es.wikipedia.org/wiki/Libro",
+  "mono": "mono_0"
+ },
+ {
+  "origen": "942a429aee9eb20f6c3046707ca2fcba38f45272acb65337b137bf3dfbe5e5e8",
+  "cont_palabras": 4165,
+  "cont_enlaces": 232,
+  "sha": "c27006af767b50c8a0539b71f4ce786af642293ff724222bbf22006f001829f4",
+  "url": "https://es.wikipedia.org/wiki/Poes%C3%ADa",
+  "mono": "mono_4"
  }
 ]
